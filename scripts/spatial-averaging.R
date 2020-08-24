@@ -163,16 +163,16 @@ get_all_mins = function(soilpts, soildf) {
 }
 
 # #read in files
-soilpts = readOGR("data/soil-shp/", "wrbfu_pts")
-RSG = readxl::read_xlsx("data/WRB_RSGs.xlsx", sheet = "RSG") %>%
-  dplyr::select(RSG, Code, Class, Description, Class_06, Description_06)
-soildf = create_soil_df(soilpts, RSG)
-
-#run through sampling multiple times
-minimums = get_all_mins(soilpts, soildf)
-for(i in 2:100) { #can change the second number to run a certain number of times
-  minimums = rbind(minimums, get_all_mins(soilpts, soildf))
-}
+# soilpts = readOGR("data/soil-shp/", "wrbfu_pts")
+# RSG = readxl::read_xlsx("data/WRB_RSGs.xlsx", sheet = "RSG") %>%
+#   dplyr::select(RSG, Code, Class, Description, Class_06, Description_06)
+# soildf = create_soil_df(soilpts, RSG)
+# 
+# #run through sampling multiple times
+# minimums = get_all_mins(soilpts, soildf)
+# for(i in 2:100) { #can change the second number to run a certain number of times
+#   minimums = rbind(minimums, get_all_mins(soilpts, soildf))
+# }
 
 #write.csv(minimums, "output/results/minimums_lang2.csv")
 
