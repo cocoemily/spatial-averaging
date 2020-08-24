@@ -66,7 +66,7 @@ plot_similarity_zones = function(p1) {
     scale_color_gradient(low = "grey", high = "blue") +
     labs(title = "100% of points", color = "similarity") +
     theme(axis.text = element_blank(), legend.text = element_text(size = 4), title = element_text(size = 6))
-  plot(pp100)
+  #plot(pp100)
   
   pp50 = ggplot(data = sp50) +
     geom_sf(aes(color = similarity2), size = 0.5) +
@@ -109,5 +109,5 @@ plotnum2 = plot_similarity_zones(p2)
 
 #cowplot::plot_grid(plotnum2, plotnum1, nrow = 1, labels = c("a)", "b)"), scale = 0.95)
 
-ggsave("output/figures/Fig4.png", cowplot::plot_grid(plotnum1, plotnum2, nrow = 1, labels = c("a)", "b)"), scale = 0.95), 
+ggsave("output/figures/Fig4.png", cowplot::plot_grid(plotnum1, plotnum2, nrow = 1, labels = c("a)", "b)"), scale = 0.9), 
        dpi = 600, width = 9, height = 4.5)
