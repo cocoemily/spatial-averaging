@@ -61,50 +61,53 @@ plot_similarity_zones = function(p1) {
   
   pp100 = ggplot(data = soilpts2) +
     geom_sf(aes(color = similarity2), size = 0.5) +
-    geom_sf(data = point, fill = "orange", color = "orange", shape = 23, size = 3) +
+    geom_sf(data = point, fill = "orange", color = "orange", shape = 23, size = 1.5) +
     theme_void() +
     scale_color_gradient(low = "grey", high = "blue") +
     labs(title = "100% of points", color = "similarity") +
-    theme(axis.text = element_blank())
+    theme(axis.text = element_blank(), legend.text = element_text(size = 4), title = element_text(size = 6))
   plot(pp100)
   
   pp50 = ggplot(data = sp50) +
     geom_sf(aes(color = similarity2), size = 0.5) +
-    geom_sf(data = point, fill = "orange", color = "orange", shape = 23, size = 3) +
+    geom_sf(data = point, fill = "orange", color = "orange", shape = 23, size = 1.5) +
     theme_void() +
     scale_color_gradient(low = "grey", high = "blue") +
     labs(title = "50% of points", color = "similarity") +
-    theme(axis.text = element_blank())
+    theme(axis.text = element_blank(), legend.text = element_text(size = 4), title = element_text(size = 6))
   
   pp10 = ggplot(data = sp10) +
-    geom_sf(aes(color = similarity2), size = 1) +
-    geom_sf(data = point, fill = "orange", color = "orange", shape = 23, size = 3) +
+    geom_sf(aes(color = similarity2), size = 0.75) +
+    geom_sf(data = point, fill = "orange", color = "orange", shape = 23, size = 1.5) +
     theme_void() +
     scale_color_gradient(low = "grey", high = "blue") +
     labs(title = "10% of points", color = "similarity") +
-    theme(axis.text = element_blank())
+    theme(axis.text = element_blank(), legend.text = element_text(size = 4), title = element_text(size = 6))
   
   pp5 = ggplot(data = sp5) +
-    geom_sf(aes(color = similarity2), size = 1) +
-    geom_sf(data = point, fill = "orange", color = "orange", shape = 23, size = 3) +
+    geom_sf(aes(color = similarity2), size = 0.75) +
+    geom_sf(data = point, fill = "orange", color = "orange", shape = 23, size = 1.5) +
     theme_void() +
     scale_color_gradient(low = "grey", high = "blue") +
     labs(title = "5% of points", color = "similarity") +
-    theme(axis.text = element_blank())
+    theme(axis.text = element_blank(), legend.text = element_text(size = 4), title = element_text(size = 6))
   
   return(cowplot::plot_grid(pp100, pp50, pp10, pp5, nrow = 2))
 }
 
-p1 = 12931
+p1 = 20031
+#p1 = 20365
 plotnum1 = plot_similarity_zones(p1)
 #plot(plotnum1)
 
-p2 = 12127 #best one so far
+p2 = 12127 
+#p2 = 12268
+#p2 = 12297
 plotnum2 = plot_similarity_zones(p2)
 #plot(plotnum2)
 
 
 #cowplot::plot_grid(plotnum2, plotnum1, nrow = 1, labels = c("a)", "b)"), scale = 0.95)
 
-ggsave("output/figures/Fig4.png", cowplot::plot_grid(plotnum2, plotnum1, nrow = 1, labels = c("a)", "b)"), scale = 0.95), 
+ggsave("output/figures/Fig4.png", cowplot::plot_grid(plotnum1, plotnum2, nrow = 1, labels = c("a)", "b)"), scale = 0.95), 
        dpi = 600, width = 9, height = 4.5)

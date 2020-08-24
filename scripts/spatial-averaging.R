@@ -174,5 +174,5 @@ get_all_mins = function(soilpts, soildf) {
 #   minimums = rbind(minimums, get_all_mins(soilpts, soildf))
 # }
 
-#write.csv(minimums, "output/results/minimums_lang2.csv")
+#write.csv(minimums, "output/results/minimums.csv")
 

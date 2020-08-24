@@ -119,12 +119,10 @@ get_mins = function(soilpts, soildf, age) {
 }
 
 #read in files
-# soilpts = readOGR("data/soil-shp/", "wrbfu_pts")
-# RSG = readxl::read_xlsx("data/WRB_RSGs.xlsx", sheet = "RSG") %>%
-#   dplyr::select(RSG, Code, Class, Description, Class_06, Description_06)
-# soildf = create_soil_df(soilpts, RSG)
-langpts = readOGR("data/lang-shp/", "samerica_lang")
-langdf = create_lang_df(langpts)
+soilpts = readOGR("data/soil-shp/", "wrbfu_pts")
+RSG = readxl::read_xlsx("data/WRB_RSGs.xlsx", sheet = "RSG") %>%
+  dplyr::select(RSG, Code, Class, Description, Class_06, Description_06)
+soildf = create_soil_df(soilpts, RSG)
 
 #specify number of sites used for different ages based on exponential model fit to European dates database
 num_sites = function(age, soilpts) {
@@ -135,9 +133,9 @@ num_sites = function(age, soilpts) {
 }
 
 #run through sampling multiple times
-minimums10k = get_mins(langpts, langdf, 10000)
-minimums50k = get_mins(langpts, langdf, 50000)
-minimums100k = get_mins(langpts, langdf, 100000)
+minimums10k = get_mins(soilpts, soildf, 10000)
+minimums50k = get_mins(soilpts, soildf, 50000)
+minimums100k = get_mins(soilpts, soildf, 100000)
 
 for(i in 2:100) { #can change the second number to run a certain number of times
   minimums10k = rbind(minimums, get_mins(soilpts, soildf, 10000))
